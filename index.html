@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ОЧЕНЬ ВАЖНЫЙ САЙТ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Creepster&family=Press+Start+2P&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0a0a0a;
+    color: #ddd;
+    font-family: 'Comic Neue', cursive;
+    overflow-x: hidden;
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='font-size:24px'><text y='50%'>🤌</text></svg>") 16 0, auto;
+    padding-bottom: 60px;
+  }
+
+  /* ===== LOADING ===== */
+  #loading {
+    position: fixed; inset: 0; background: #0a0a0a; z-index: 9999;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    transition: opacity 0.8s;
+  }
+  #loading.fade-out { opacity: 0; pointer-events: none; }
+  #loading h1 {
+    font-family: 'Creepster', cursive; font-size: clamp(1.4rem, 4vw, 2.5rem);
+    color: #ff6b6b; animation: loadPulse 0.5s infinite alternate;
+    text-align: center; padding: 0 1rem; max-width: 700px;
+  }
+  #loading-sub { margin-top: 1rem; font-size: 0.9rem; color: #555; animation: blink 1s infinite; }
+  #loading-bar-wrap { width: 300px; max-width: 80vw; height: 18px; border: 2px solid #ff6b6b; border-radius: 10px; margin-top: 2rem; overflow: hidden; }
+  #loading-bar { height: 100%; width: 0%; background: linear-gradient(90deg, #ff6b6b, #feca57, #ff6b6b); background-size: 200%; animation: shimmer 1s infinite linear; transition: width 0.3s; }
+
+  @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+  @keyframes loadPulse { from { transform: scale(1); } to { transform: scale(1.03); } }
+  @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.2; } }
+
+  /* ===== SECTIONS ===== */
+  .section {
+    min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; padding: 4rem 1.5rem; position: relative;
+  }
+
+  /* ===== MARQUEE ===== */
+  .chaos-marquee {
+    width: 100%; overflow: hidden;
+    background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+    padding: 0.4rem 0; font-family: 'Bangers', cursive; font-size: 1.1rem;
+    color: #0a0a0a; white-space: nowrap; position: fixed; top: 0; z-index: 500;
+  }
+  .marquee-content { display: inline-block; animation: marquee 25s linear infinite; }
+  @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  .marquee-time { opacity: 0.35; font-size: 0.7rem; vertical-align: middle; }
+
+  /* ===== HERO ===== */
+  #hero { background: radial-gradient(ellipse at center, #1a0a2e 0%, #0a0a0a 70%); padding-top: 3.5rem; }
+  #hero h1 {
+    font-family: 'Creepster', cursive; font-size: clamp(2.2rem, 8vw, 5.5rem);
+    text-align: center;
+    background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3, #ff6b6b);
+    background-size: 400%; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; animation: rainbowShift 3s linear infinite;
+  }
+  @keyframes rainbowShift { 0% { background-position: 0% 50%; } 100% { background-position: 400% 50%; } }
+  #hero .subtitle {
+    font-size: clamp(0.95rem, 2.5vw, 1.5rem); margin-top: 1.2rem; color: #888;
+    text-align: center; max-width: 600px; line-height: 1.5;
+  }
+  .scroll-indicator { position: absolute; bottom: 2rem; font-size: 1.2rem; animation: bounce 2s ease-in-out infinite; color: #555; }
+  @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+  /* hero hidden time */
+  .hero-hidden-time {
+    position: absolute; bottom: 12px; right: 18px;
+    font-family: 'Press Start 2P', monospace; font-size: 0.5rem;
+    opacity: 0.06; transition: opacity 0.3s;
+  }
+  .hero-hidden-time:hover { opacity: 0.4; }
+
+  /* ===== STRONG HAND ===== */
+  #strong-hand { background: radial-gradient(ellipse at bottom, #2d1b00 0%, #0a0a0a 70%); overflow: hidden; }
+  .strong-hand-container { position: relative; text-align: center; max-width: 600px; }
+  .hand-emoji {
+    font-size: clamp(4rem, 15vw, 10rem); display: inline-block;
+    animation: strongHandReach 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 30px rgba(255,107,107,0.5));
+    position: relative;
+  }
+  @keyframes strongHandReach {
+    0%,100% { transform: translateY(0) rotate(-10deg) scale(1); }
+    25% { transform: translateY(-20px) rotate(5deg) scale(1.1); }
+    50% { transform: translateY(-10px) rotate(-5deg) scale(1.05); }
+    75% { transform: translateY(-25px) rotate(8deg) scale(1.15); }
+  }
+  .hand-quote {
+    font-family: 'Bangers', cursive; font-size: clamp(1.5rem, 5vw, 3rem);
+    color: #feca57; margin-top: 1rem;
+    text-shadow: 3px 3px 0 #ff6b6b, 6px 6px 0 rgba(0,0,0,0.3);
+    animation: textShake 0.15s infinite;
+  }
+  @keyframes textShake {
+    0% { transform: translate(0,0); } 25% { transform: translate(1px,-1px); }
+    50% { transform: translate(-1px,1px); } 75% { transform: translate(1px,1px); }
+    100% { transform: translate(-1px,-1px); }
+  }
+  .hand-subquote { font-size: clamp(0.9rem, 2.5vw, 1.2rem); color: #aaa; margin-top: 1rem; line-height: 1.6; }
+  /* hidden time near hand */
+  .hand-hidden-time {
+    position: absolute; top: -5px; right: -10px;
+    font-family: 'Press Start 2P', monospace; font-size: 0.45rem;
+    opacity: 0; transition: opacity 0.5s; pointer-events: none;
+  }
+  .hand-hidden-time.revealed { opacity: 0.7; pointer-events: auto; }
+
+  /* ===== BUTTONS ===== */
+  .disco-btn {
+    margin-top: 1.5rem; padding: 0.8rem 1.8rem;
+    font-family: 'Bangers', cursive; font-size: 1.3rem;
+    border: 3px solid #ff6b6b; background: transparent; color: #ff6b6b;
+    border-radius: 50px; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden;
+  }
+  .disco-btn:hover {
+    background: #ff6b6b; color: #0a0a0a;
+    transform: scale(1.08) rotate(-2deg); box-shadow: 0 0 30px rgba(255,107,107,0.4);
+  }
+  .disco-btn:active { transform: scale(0.95); }
+
+  /* ===== EVA ZONE ===== */
+  #eva-zone { background: radial-gradient(ellipse at top, #0a2a1a 0%, #0a0a0a 70%); }
+  .eva-title {
+    font-family: 'Bangers', cursive; font-size: clamp(1.4rem, 5vw, 3.5rem);
+    color: #48dbfb; text-align: center; margin-bottom: 2rem; text-shadow: 3px 3px 0 #ff9ff3;
+  }
+  .chaos-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem; max-width: 900px; width: 100%;
+  }
+  .chaos-card {
+    background: rgba(255,255,255,0.04); border: 2px solid rgba(255,255,255,0.08);
+    border-radius: 15px; padding: 1.5rem; text-align: center;
+    transition: all 0.3s; position: relative; overflow: hidden;
+  }
+  .chaos-card:hover {
+    transform: rotate(var(--r, 3deg)) scale(1.05);
+    border-color: #ff6b6b; box-shadow: 0 0 25px rgba(255,107,107,0.25);
+  }
+  .chaos-card:nth-child(2):hover { --r: -4deg; }
+  .chaos-card:nth-child(3):hover { --r: 5deg; }
+  .chaos-card:nth-child(4):hover { --r: -3deg; }
+  .chaos-card:nth-child(5):hover { --r: 6deg; }
+  .chaos-card:nth-child(6):hover { --r: -5deg; }
+  .chaos-card .card-emoji { font-size: 2.8rem; display: block; margin-bottom: 0.5rem; }
+  .chaos-card h3 { font-family: 'Bangers', cursive; color: #feca57; font-size: 1.2rem; margin-bottom: 0.4rem; }
+  .chaos-card p { color: #aaa; font-size: 0.9rem; line-height: 1.45; }
+  .chaos-card .stage-dir { color: #555; font-style: italic; font-size: 0.8rem; }
+  /* hover-reveal time on card */
+  .card-hidden-time {
+    position: absolute; bottom: 5px; right: 8px;
+    font-family: 'Press Start 2P', monospace; font-size: 0.4rem;
+    opacity: 0; transition: opacity 0.8s 2s; /* 2s delay */
+  }
+  .chaos-card:hover .card-hidden-time { opacity: 0.6; }
+  .chaos-card:not(:hover) .card-hidden-time { transition: opacity 0.2s; }
+
+  /* ===== QUOTES ===== */
+  #quotes { background: radial-gradient(ellipse at right, #2a1a0a 0%, #0a0a0a 70%); position: relative; }
+  .quote-box {
+    background: rgba(255,255,255,0.03); border: 2px dashed #feca57;
+    border-radius: 20px; padding: 2rem; max-width: 600px; text-align: center; position: relative;
+  }
+  .quote-box::before {
+    content: '«'; font-size: 5rem; font-family: 'Creepster', cursive;
+    color: rgba(255,107,107,0.15); position: absolute; top: -5px; left: 15px;
+  }
+  .quote-text { font-size: clamp(1.1rem, 2.8vw, 1.6rem); color: #feca57; font-family: 'Bangers', cursive; line-height: 1.4; }
+  .quote-attr { margin-top: 1rem; color: #666; font-style: italic; font-size: 0.9rem; }
+  /* upside down time near quotes */
+  .quotes-hidden-time {
+    position: absolute; top: -25px; left: 50%; transform: translateX(-50%) rotate(180deg);
+    font-family: 'Press Start 2P', monospace; font-size: 0.4rem; opacity: 0.07;
+    color: #feca57; letter-spacing: 2px; transition: opacity 0.3s;
+  }
+  .quotes-hidden-time:hover { opacity: 0.5; }
+
+  /* ===== FACTS ===== */
+  #facts { background: radial-gradient(ellipse at left, #2a0a2a 0%, #0a0a0a 70%); }
+  .facts-title {
+    font-family: 'Creepster', cursive; font-size: clamp(1.3rem, 4.5vw, 2.8rem);
+    color: #ff9ff3; text-align: center; margin-bottom: 2rem;
+  }
+  .fact-item {
+    background: rgba(255,255,255,0.03); border-left: 4px solid #ff6b6b;
+    padding: 1.2rem 1.5rem; margin: 0.8rem 0; max-width: 650px; width: 100%;
+    border-radius: 0 10px 10px 0; font-size: clamp(0.85rem, 2.3vw, 1.05rem);
+    line-height: 1.55; opacity: 0; transform: translateX(-40px); transition: all 0.5s ease-out;
+    position: relative;
+  }
+  .fact-item.visible { opacity: 1; transform: translateX(0); }
+  .fact-item:nth-child(even) { border-left-color: #feca57; }
+  .fact-item:nth-child(3n) { border-left-color: #48dbfb; }
+  .fact-number { font-family: 'Press Start 2P', monospace; font-size: 0.6rem; color: #ff6b6b; display: block; margin-bottom: 0.3rem; }
+  /* near-invisible time hidden in fact */
+  .fact-hidden-time {
+    font-family: 'Press Start 2P', monospace; font-size: 0.5rem;
+    color: rgba(200,200,255,0.03); transition: color 0.3s; cursor: default;
+  }
+  .fact-hidden-time::selection { background: #ff6b6b; color: #fff; }
+  .fact-hidden-time::-moz-selection { background: #ff6b6b; color: #fff; }
+
+  /* ===== FINALE ===== */
+  #finale { background: radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a0a 70%); text-align: center; }
+  .finale-text { font-family: 'Bangers', cursive; font-size: clamp(1.4rem, 5vw, 3.5rem); line-height: 1.3; max-width: 800px; }
+  .finale-text .line1 { color: #888; display: block; }
+  .finale-text .line2 {
+    background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb);
+    background-size: 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; animation: rainbowShift 4s linear infinite;
+    display: block; font-size: clamp(1.8rem, 7vw, 5rem); margin-top: 0.5rem;
+  }
+  .finale-sub { color: #666; margin-top: 1.5rem; font-size: clamp(0.85rem, 2vw, 1.05rem); max-width: 550px; line-height: 1.6; }
+  .finale-heart { font-size: 3.5rem; margin-top: 1.5rem; display: inline-block; animation: heartbeat 1s ease-in-out infinite; cursor: pointer; }
+  @keyframes heartbeat {
+    0%,100% { transform: scale(1); } 15% { transform: scale(1.3); }
+    30% { transform: scale(1); } 45% { transform: scale(1.2); } 60% { transform: scale(1); }
+  }
+
+  /* ===== THE VOID (scroll past ending) ===== */
+  #the-void {
+    height: 500px; position: relative;
+    background: #0a0a0a;
+    display: flex; align-items: flex-end; justify-content: center; padding-bottom: 80px;
+  }
+  .void-time {
+    font-family: 'Press Start 2P', monospace; font-size: 0.5rem;
+    opacity: 0.05; transition: opacity 0.3s; color: #fff;
+  }
+  .void-time:hover { opacity: 0.4; }
+
+  /* ===== SECRET ZONE ===== */
+  #secret-zone {
+    display: none; min-height: 100vh;
+    background: radial-gradient(ellipse at center, #1a2a1a 0%, #0a0a0a 70%);
+    flex-direction: column; align-items: center; justify-content: center;
+    padding: 4rem 1.5rem; text-align: center;
+  }
+  #secret-zone.unlocked { display: flex; }
+  .secret-title {
+    font-family: 'Creepster', cursive; font-size: clamp(1.5rem, 5vw, 3rem);
+    color: #1dd1a1; margin-bottom: 1.5rem;
+    text-shadow: 0 0 30px rgba(29,209,161,0.3);
+  }
+  .secret-msg {
+    max-width: 550px; font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+    line-height: 1.7; color: #aaa;
+  }
+  .secret-msg em { color: #1dd1a1; font-style: normal; }
+  .secret-wish {
+    margin-top: 2rem; font-family: 'Bangers', cursive;
+    font-size: clamp(1.5rem, 5vw, 3rem); color: #feca57;
+    animation: gentlePulse 3s ease-in-out infinite;
+  }
+  @keyframes gentlePulse { 0%,100% { opacity: 0.8; } 50% { opacity: 1; } }
+
+  /* ===== PUZZLE TRACKER ===== */
+  #puzzle-tracker {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: rgba(10,10,10,0.95); border-top: 2px solid #222;
+    padding: 0.5rem 1rem; z-index: 1000;
+    display: flex; align-items: center; justify-content: center;
+    gap: 0.5rem; flex-wrap: wrap;
+    font-family: 'Press Start 2P', monospace; font-size: 0.5rem;
+  }
+  .tracker-label { color: #888; margin-right: 0.3rem; }
+  .tracker-time {
+    color: #333; padding: 2px 6px; border: 1px solid #222;
+    border-radius: 4px; transition: all 0.5s;
+  }
+  .tracker-time.found {
+    color: #1dd1a1; border-color: #1dd1a1;
+    box-shadow: 0 0 8px rgba(29,209,161,0.3);
+    animation: foundPop 0.5s ease-out;
+  }
+  @keyframes foundPop { 0% { transform: scale(1.5); } 100% { transform: scale(1); } }
+  .tracker-count { color: #555; }
+  .tracker-hint {
+    color: #333; font-family: 'Comic Neue', cursive; font-size: 0.7rem;
+    margin-left: 0.5rem; transition: color 0.3s;
+  }
+  #puzzle-tracker:hover .tracker-hint { color: #555; }
+
+  /* ===== TIME TOKENS ===== */
+  .time-token {
+    cursor: pointer; user-select: none;
+    font-family: 'Press Start 2P', monospace;
+    transition: all 0.3s; position: relative;
+  }
+  .time-token.found {
+    color: #1dd1a1 !important; opacity: 1 !important;
+    text-shadow: 0 0 10px rgba(29,209,161,0.5);
+    cursor: default;
+  }
+
+  /* ===== FOUND POPUP ===== */
+  .found-popup {
+    position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: rgba(10,10,10,0.95); border: 2px solid #1dd1a1;
+    border-radius: 15px; padding: 1.5rem 2rem; z-index: 10000;
+    text-align: center; animation: popIn 0.4s ease-out;
+    max-width: 90vw;
+  }
+  .found-popup h3 { font-family: 'Bangers', cursive; color: #1dd1a1; font-size: 1.5rem; }
+  .found-popup p { color: #888; margin-top: 0.5rem; font-size: 0.9rem; }
+  @keyframes popIn { 0% { transform: translate(-50%,-50%) scale(0); } 100% { transform: translate(-50%,-50%) scale(1); } }
+
+  /* ===== ERROR DIALOG ===== */
+  .error-dialog {
+    position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: #c0c0c0; border: 3px outset #fff; z-index: 10001;
+    font-family: 'Tahoma', 'Arial', sans-serif; font-size: 12px; color: #000;
+    min-width: 350px; max-width: 90vw; display: none;
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.5);
+  }
+  .error-titlebar {
+    background: linear-gradient(90deg, #000080, #1084d0);
+    color: #fff; font-weight: bold; padding: 3px 6px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .error-close {
+    background: #c0c0c0; border: 2px outset #fff; width: 18px; height: 18px;
+    font-size: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    font-weight: bold; color: #000;
+  }
+  .error-body { padding: 15px; display: flex; gap: 12px; align-items: flex-start; }
+  .error-icon { font-size: 2rem; }
+  .error-buttons { padding: 8px 15px; text-align: center; border-top: 1px solid #999; }
+  .error-btn {
+    background: #c0c0c0; border: 2px outset #fff; padding: 3px 20px;
+    font-size: 12px; cursor: pointer; margin: 0 4px; font-family: inherit;
+  }
+  .error-btn:active { border-style: inset; }
+
+  /* ===== FLOATING CHAOS ===== */
+  .floater {
+    position: fixed; font-size: 2rem; pointer-events: none; z-index: 100;
+    animation: float-up linear forwards; opacity: 0.5;
+  }
+  @keyframes float-up {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.5; } 90% { opacity: 0.5; }
+    100% { transform: translateY(-110vh) rotate(720deg); opacity: 0; }
+  }
+
+  /* ===== TAB NOTIFICATION BADGE ===== */
+  .notif-popup {
+    position: fixed; top: 50px; right: 20px;
+    background: rgba(255,107,107,0.1); border: 1px solid rgba(255,107,107,0.3);
+    border-radius: 12px; padding: 1rem 1.5rem; z-index: 800;
+    color: #ff6b6b; font-size: 0.9rem; max-width: 300px;
+    animation: slideInRight 0.5s ease-out, fadeOut 0.5s 3s forwards;
+    pointer-events: none;
+  }
+  @keyframes slideInRight { from { transform: translateX(100px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+  @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+
+  /* ===== PANIC MODE ===== */
+  body.panic-mode { animation: panicBg 0.5s infinite; }
+  @keyframes panicBg { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }
+
+  /* ===== RIGHT CLICK BLOCKER ===== */
+  .right-click-msg {
+    position: fixed; z-index: 10002;
+    background: rgba(10,10,10,0.9); border: 1px solid #333;
+    border-radius: 8px; padding: 0.6rem 1rem; color: #888;
+    font-size: 0.8rem; pointer-events: none;
+    animation: popIn 0.2s ease-out, fadeOut 0.3s 1.5s forwards;
+  }
+
+  /* ===== HEART EXPLOSION ===== */
+  .mini-heart {
+    position: fixed; pointer-events: none; z-index: 9000;
+    animation: heartFloat 2s ease-out forwards;
+  }
+  @keyframes heartFloat {
+    0% { transform: scale(0) rotate(0deg); opacity: 1; }
+    50% { opacity: 1; }
+    100% { transform: scale(1) rotate(var(--rot, 30deg)) translate(var(--tx, 50px), var(--ty, -200px)); opacity: 0; }
+  }
+
+  /* ===== CONFETTI ===== */
+  #confetti-canvas { position: fixed; inset: 0; pointer-events: none; z-index: 9998; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 600px) {
+    .chaos-grid { grid-template-columns: 1fr; }
+    .quote-box { padding: 1.5rem; }
+    .error-dialog { min-width: 280px; }
+    #puzzle-tracker { font-size: 0.4rem; gap: 0.3rem; padding: 0.4rem 0.5rem; }
+  }
+
+  /* ===== WOBBLE ===== */
+  @keyframes wobble { 0%,100% { transform: rotate(-1deg); } 50% { transform: rotate(1deg); } }
+</style>
+</head>
+<body>
+
+<!-- ============================== LOADING ============================== -->
+<div id="loading">
+  <h1 id="loading-text">ЗАГРУЗКА СТРАДАНИЙ...</h1>
+  <div id="loading-sub">не паникуй. или паникуй. мне всё равно.</div>
+  <div id="loading-bar-wrap"><div id="loading-bar"></div></div>
+</div>
+
+<canvas id="confetti-canvas"></canvas>
+
+<!-- ============================== MARQUEE ============================== -->
+<div class="chaos-marquee">
+  <span class="marquee-content">
+    ⚠️ ОФИЦИАЛЬНЫЙ САЙТ МОРАЛЬНОЙ ПОДДЕРЖКИ ⚠️ СЕРТИФИЦИРОВАН БАБУШКОЙ ⚠️ ПОБОЧНЫЕ ЭФФЕКТЫ: ЛЁГКОЕ ЖЕЛАНИЕ ЖИТЬ ⚠️ ПРИ ГОЛОВОКРУЖЕНИИ ПРОСТО ЛЯГТЕ — ВЫ УЖЕ И ТАК НА ДНЕ ⚠️ <span class="time-token marquee-time" data-time="22:22" onclick="findTime('22:22')">22:22</span> ⚠️ WEBSITE NOT RESPONSIBLE FOR: SNORTING, CRYING, OR FEELING THINGS ⚠️ ЕСЛИ ВЫ ЭТО ЧИТАЕТЕ — ВАМ ТОЧНО НЕЧЕГО ДЕЛАТЬ ⚠️ ИДЕАЛЬНО ⚠️
+    ⚠️ ОФИЦИАЛЬНЫЙ САЙТ МОРАЛЬНОЙ ПОДДЕРЖКИ ⚠️ СЕРТИФИЦИРОВАН БАБУШКОЙ ⚠️ ПОБОЧНЫЕ ЭФФЕКТЫ: ЛЁГКОЕ ЖЕЛАНИЕ ЖИТЬ ⚠️ ПРИ ГОЛОВОКРУЖЕНИИ ПРОСТО ЛЯГТЕ — ВЫ УЖЕ И ТАК НА ДНЕ ⚠️ <span class="time-token marquee-time" data-time="22:22" onclick="findTime('22:22')">22:22</span> ⚠️ WEBSITE NOT RESPONSIBLE FOR: SNORTING, CRYING, OR FEELING THINGS ⚠️ ЕСЛИ ВЫ ЭТО ЧИТАЕТЕ — ВАМ ТОЧНО НЕЧЕГО ДЕЛАТЬ ⚠️ ИДЕАЛЬНО ⚠️
+  </span>
+</div>
+
+<!-- ============================== HERO ============================== -->
+<section id="hero" class="section">
+  <h1 id="main-title">САЙТ ДЛЯ ТЕБЯ</h1>
+  <div class="subtitle">
+    el rato made this instead of doing anything productive.<br>
+    so now there are TWO of us not producing this week.<br>
+    solidarity. 🐀
+  </div>
+  <div class="scroll-indicator">👇 листай вниз, тебе всё равно нечего делать 👇</div>
+  <!-- HIDDEN TIME: 11:11 — tiny, barely visible, bottom right -->
+  <span class="time-token hero-hidden-time" data-time="11:11" onclick="findTime('11:11')">11:11</span>
+</section>
+
+<!-- ============================== STRONG HAND ============================== -->
+<section id="strong-hand" class="section">
+  <div class="strong-hand-container">
+    <div class="hand-emoji" id="hand-emoji">🤚
+      <!-- HIDDEN TIME: 03:03 — appears after 3 clicks on hand -->
+      <span class="time-token hand-hidden-time" id="hand-time" data-time="03:03" onclick="event.stopPropagation();findTime('03:03')">03:03</span>
+    </div>
+    <div class="hand-quote" id="hand-quote">TAKE MY STRONG HAND</div>
+    <div class="hand-subquote" id="hand-sub">
+      Yes it looks like that. In Russia we don't judge hands. We judge character. Your character is fine. The hand is a problem but we don't talk about the hand.
+    </div>
+    <button class="disco-btn" onclick="cycleHandQuote()">ХВАТАЙ РУКУ</button>
+  </div>
+</section>
+
+<!-- ============================== EVA ZONE ============================== -->
+<section id="eva-zone" class="section">
+  <div class="eva-title">🍳 ТВОЯ НЕДЕЛЯ КАК ВЫПУСК EVA MOROZOVA 🍳</div>
+  <div class="chaos-grid">
+    <div class="chaos-card">
+      <span class="card-emoji">🫠</span>
+      <h3>ПОНЕДЕЛЬНИК</h3>
+      <p>Today we are making productivity. <span class="stage-dir">[drops productivity on floor]</span> Normal. We continue. The recipe doesn't say anything about the floor being clean.</p>
+    </div>
+    <div class="chaos-card">
+      <span class="card-emoji">🔪</span>
+      <h3>ВТОРНИК</h3>
+      <p>The recipe calls for motivation. We don't have motivation. We substitute with spite. <span class="stage-dir">[aggressive chopping]</span> Spite works better actually. Motivation expires. Spite is eternal.</p>
+    </div>
+    <div class="chaos-card">
+      <span class="card-emoji">🫕</span>
+      <h3>СРЕДА</h3>
+      <p>Everything is on fire. <span class="stage-dir">[camera shakes]</span> This is fine. Fire is just aggressive seasoning. Gordon Ramsay would cry. But Gordon Ramsay cries a lot so this means nothing.</p>
+    </div>
+    <div class="chaos-card">
+      <span class="card-emoji">🧎‍♀️</span>
+      <h3>ЧЕТВЕРГ</h3>
+      <p>We are lying on the kitchen floor now. This is part of the recipe. Step 4: exist horizontally. <span class="stage-dir">[silence]</span> The soufflé collapsed. So did we. We have so much in common with the soufflé.</p>
+      <!-- HIDDEN TIME: 20:20 — appears after hovering card for 3s -->
+      <span class="time-token card-hidden-time" data-time="20:20" onclick="event.stopPropagation();findTime('20:20')">20:20</span>
+    </div>
+    <div class="chaos-card">
+      <span class="card-emoji">🍕</span>
+      <h3>ПЯТНИЦА</h3>
+      <p>We ordered delivery. This IS the recipe. <span class="stage-dir">[triumphant music]</span> Cooking is about knowing when to stop cooking. We stopped on Monday. Advanced technique.</p>
+    </div>
+    <div class="chaos-card">
+      <span class="card-emoji">💀</span>
+      <h3>ВЫХОДНЫЕ</h3>
+      <p>The kitchen is closed. We sit on the counter eating cereal at 4pm in complete darkness. <span class="stage-dir">[no music, just vibes]</span> This is peak performance. Бабушка would not approve. Бабушка is not here. Freedom.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== QUOTES ============================== -->
+<section id="quotes" class="section">
+  <!-- HIDDEN TIME: 07:07 — upside down, looks like decoration -->
+  <span class="time-token quotes-hidden-time" data-time="07:07" onclick="findTime('07:07')">07:07</span>
+  <div class="eva-title" style="color:#feca57;">🎬 МУДРОСТЬ ИЗ SCARY MOVIE 2 🎬</div>
+  <div class="quote-box">
+    <div class="quote-text" id="quote-text">The ghost in Scary Movie 2 could not even scare Cindy properly and it was LITERALLY A GHOST. Your problems are less competent than that ghost. Think about it.</div>
+    <div class="quote-attr" id="quote-attr">— парапсихологический анализ</div>
+  </div>
+  <button class="disco-btn" id="quote-btn" onclick="nextQuote()">ЕЩЁ МУДРОСТИ</button>
+</section>
+
+<!-- ============================== FACTS ============================== -->
+<section id="facts" class="section">
+  <div class="facts-title">📋 ПРОТОКОЛ ПРАВДЫ 📋</div>
+
+  <div class="fact-item">
+    <span class="fact-number">ФАКТ №001</span>
+    You didn't produce this week. A bear hibernates for 6 months and nobody fires the bear. You are at least as valuable as a bear. Arguably more. Bears can't use spreadsheets. <span class="time-token fact-hidden-time" data-time="15:15" onclick="findTime('15:15')">15:15</span>
+  </div>
+
+  <div class="fact-item">
+    <span class="fact-number">ФАКТ №002</span>
+    You think you're "taking someone's spot." Чушь. The spot didn't exist before you showed up. You invented the spot. The spot should be paying you rent. The spot writes about you in its diary.
+  </div>
+
+  <div class="fact-item">
+    <span class="fact-number">ФАКТ №003</span>
+    Your inner voice says you're wasting people's time. Your inner voice also told you to eat an entire cake at 2am. We don't listen to that voice. That voice has a worse track record than a weatherman.
+  </div>
+
+  <div class="fact-item">
+    <span class="fact-number">ФАКТ №004</span>
+    "Hard working" and "didn't produce this week" are not opposites. They are called Tuesday. Everybody has Tuesdays. Even on Thursdays. Even CEOs. Especially CEOs. Have you SEEN them?
+  </div>
+
+  <div class="fact-item">
+    <span class="fact-number">ФАКТ №005</span>
+    The people around you chose to have you around. People are selfish. Cruel, even. They would NOT keep you if you were a waste of time. Humans are brutal like that. So congratulations: you are useful enough for selfish people. This is the highest compliment.
+  </div>
+
+  <div class="fact-item">
+    <span class="fact-number">ФАКТ №006</span>
+    In Russia there is a saying: "не так страшен чёрт, как его малюют" — the devil is not as scary as he is painted. Your bad week is painted by your brain. Your brain is a terrible artist. Ignore the painting.
+  </div>
+
+  <div class="fact-item">
+    <span class="fact-number">ФАКТ №007</span>
+    This website contributes absolutely nothing to humanity. El rato spent hours on it. You are reading it. We are ALL wasting time right now. And yet somehow this moment has value. Explain that. 🐀
+  </div>
+</section>
+
+<!-- ============================== FINALE ============================== -->
+<section id="finale" class="section">
+  <div class="finale-text">
+    <span class="line1">короче:</span>
+    <span class="line2">тебя любят неадекватно сильно</span>
+  </div>
+  <div class="finale-sub">
+    Even on the weeks where your brain tells you otherwise. <em>Especially</em> on those weeks.
+    The worse you feel, the more aggressively you are loved. This is not negotiable.
+    <br><br>
+    el rato has spoken. 🐀
+    <br><br>
+    Now close this cursed website and go watch Eva Morozova or Scary Movie 2 or both at the same time, which is honestly the same experience.
+  </div>
+  <div class="finale-heart" id="finale-heart" title="click me">❤️</div>
+  <button class="disco-btn" onclick="triggerPanicMode()" style="margin-top:1.5rem;">🚨 НЕ НАЖИМАЙ 🚨</button>
+</section>
+
+<!-- ============================== THE VOID ============================== -->
+<div id="the-void">
+  <!-- HIDDEN TIME: 00:00 — way below everything, in the void -->
+  <span class="time-token void-time" data-time="00:00" onclick="findTime('00:00')">00:00</span>
+</div>
+
+<!-- ============================== SECRET ZONE ============================== -->
+<section id="secret-zone">
+  <div class="secret-title">🔓 ТЫ НАШЛА ВСЕ ЧАСЫ</div>
+  <div class="secret-msg">
+    You found every single hidden time on this page.<br><br>
+    You know what that means?<br><br>
+    It means you are <em>thorough</em>. <em>Persistent</em>. <em>Stubborn enough to search every pixel of a stupid website made by your boyfriend.</em><br><br>
+    And you're telling me a person like that is "wasting people's time"?<br><br>
+    A person who just solved a puzzle that nobody asked her to solve, purely because she doesn't give up?<br><br>
+    <em>Ты серьёзно?</em><br><br>
+    That's not someone who takes someone's spot.<br>
+    That's someone who <em>creates</em> spots.<br><br>
+    The bad week is temporary.<br>
+    You are not.
+  </div>
+  <div class="secret-wish">загадай желание 🌟</div>
+  <div style="color:#444;margin-top:1rem;font-size:0.85rem;">
+    (every double time is a wish. you just collected seven. use them wisely. or don't. you've earned them.)
+  </div>
+</section>
+
+<!-- ============================== PUZZLE TRACKER ============================== -->
+<div id="puzzle-tracker">
+  <span class="tracker-label">🕐</span>
+  <span class="tracker-time" id="tracker-0000">00:00</span>
+  <span class="tracker-time" id="tracker-0303">03:03</span>
+  <span class="tracker-time" id="tracker-0707">07:07</span>
+  <span class="tracker-time" id="tracker-1111">11:11</span>
+  <span class="tracker-time" id="tracker-1515">15:15</span>
+  <span class="tracker-time" id="tracker-2020">20:20</span>
+  <span class="tracker-time" id="tracker-2222">22:22</span>
+  <span class="tracker-count">(<span id="tracker-count">0</span>/7)</span>
+  <span class="tracker-hint">найди двойные часы</span>
+</div>
+
+<!-- ============================== ERROR DIALOG ============================== -->
+<div class="error-dialog" id="error-dialog">
+  <div class="error-titlebar">
+    <span>self-doubt.exe</span>
+    <div class="error-close" onclick="closeError()">X</div>
+  </div>
+  <div class="error-body">
+    <span class="error-icon">⚠️</span>
+    <div>
+      <b>self-doubt.exe</b> has encountered a problem and needs to close.<br><br>
+      <b>Reason:</b> it was wrong about literally everything.<br>
+      <b>Details:</b> you are fine. the program was lying. as usual.
+    </div>
+  </div>
+  <div class="error-buttons">
+    <button class="error-btn" onclick="closeError()">OK</button>
+    <button class="error-btn" onclick="closeError()">Отправить жалобу бабушке</button>
+  </div>
+</div>
+
+<script>
+// ============================== LOADING ==============================
+const loadingTexts = [
+  "ЗАГРУЗКА СТРАДАНИЙ...",
+  "Loading compliments... they are heavy and in Russian...",
+  "Deleting impostor syndrome... ACCESS DENIED... trying with admin rights...",
+  "Consulting бабушка... бабушка says eat something first...",
+  "Downloading self-worth... 404 NOT FOUND... creating from scratch...",
+  "Asking Eva Morozova for permission... [camera shakes] ...permission granted",
+  "Warming up like борщ. Everything good takes time.",
+  "Connecting to strong hand... HAND FOUND... it looks like that... we continue",
+  "Сайт almost ready. Unlike your mental health. (шутка) (or is it)",
+  "ну всё, поехали."
+];
+
+let loadIdx = 0;
+const loadingEl = document.getElementById('loading');
+const loadingTextEl = document.getElementById('loading-text');
+const loadingBar = document.getElementById('loading-bar');
+
+const loadInterval = setInterval(() => {
+  loadIdx++;
+  if (loadIdx < loadingTexts.length) {
+    loadingTextEl.textContent = loadingTexts[loadIdx];
+    loadingBar.style.width = ((loadIdx / (loadingTexts.length - 1)) * 100) + '%';
+  } else {
+    clearInterval(loadInterval);
+    loadingBar.style.width = '100%';
+    setTimeout(() => {
+      loadingEl.classList.add('fade-out');
+      setTimeout(() => { loadingEl.style.display = 'none'; startFloaters(); }, 800);
+    }, 400);
+  }
+}, 900);
+
+// ============================== PUZZLE: DOUBLE TIMES ==============================
+const TIMES = ['00:00','03:03','07:07','11:11','15:15','20:20','22:22'];
+const foundTimes = new Set();
+
+const foundMessages = {
+  '11:11': 'загадай желание. или не загадывай. вселенной всё равно. но на всякий случай загадай.',
+  '22:22': 'нашла в бегущей строке. глазастая.',
+  '03:03': 'рука отдала. предательница.',
+  '07:07': 'перевёрнутые. как твоя жизнь на этой неделе. но ты всё равно нашла.',
+  '15:15': 'невидимые чернила? нет, просто CSS. ты взломала матрицу.',
+  '20:20': 'терпение — это суперсила. ты ждала 3 секунды. герой.',
+  '00:00': 'ты долистала до пустоты. и даже там нашла что-то. как в жизни.'
+};
+
+function findTime(time) {
+  if (foundTimes.has(time)) return;
+  foundTimes.add(time);
+
+  // Mark all tokens with this time
+  document.querySelectorAll(`.time-token[data-time="${time}"]`).forEach(el => el.classList.add('found'));
+
+  // Update tracker
+  const trackerId = 'tracker-' + time.replace(':','');
+  const trackerEl = document.getElementById(trackerId);
+  if (trackerEl) trackerEl.classList.add('found');
+  document.getElementById('tracker-count').textContent = foundTimes.size;
+
+  // Popup
+  showFoundPopup(time, foundMessages[time] || 'найдено!');
+
+  // Confetti
+  spawnConfetti(40);
+
+  // Check completion
+  if (foundTimes.size === TIMES.length) {
+    setTimeout(unlockSecret, 2000);
+  }
+}
+
+function showFoundPopup(time, msg) {
+  const popup = document.createElement('div');
+  popup.className = 'found-popup';
+  popup.innerHTML = `<h3>🕐 ${time}</h3><p>${msg}</p>`;
+  document.body.appendChild(popup);
+  setTimeout(() => { popup.style.animation = 'fadeOut 0.5s forwards'; setTimeout(() => popup.remove(), 500); }, 2500);
+}
+
+function unlockSecret() {
+  const secret = document.getElementById('secret-zone');
+  secret.classList.add('unlocked');
+  setTimeout(() => {
+    secret.scrollIntoView({ behavior: 'smooth' });
+    spawnConfetti(200);
+  }, 300);
+}
+
+// ============================== STRONG HAND ==============================
+const handQuotes = [
+  { q: "TAKE MY STRONG HAND", s: "Yes it looks like that. In Russia we don't judge hands. We judge character. Your character is fine. The hand is a problem but we don't talk about the hand." },
+  { q: "MY GERMS!", s: "Hanson cared about his germs. Nobody else did. Like your brain caring about your 'bad week.' Nobody else noticed. Only you and the germs." },
+  { q: "GRAB MY STRONG HAND, CHILD", s: "Hanson served dinner to an ENTIRE mansion with that hand. You can't even serve yourself basic self-respect? Неприемлемо. Hanson is disappointed." },
+  { q: "LET ME USE MY STRONG HAND", s: "The strong hand doesn't ask permission. It just helps. Like people around you. They didn't ask if you deserve help. They just gave it. Because you do. Конец дискуссии." },
+  { q: "I SAID MY STRONG HAND", s: "He INSISTED on the weird hand. He was proud of it. Be proud of your weird week. It's still YOUR week. Nobody else could have had it." },
+  { q: "HIIII I'M HANSON 🤚", s: "Hanson introduced himself with confidence. With THAT hand. The audacity. The power. Channel Hanson energy. Introduce yourself to the week like you own it. Because you do." },
+  { q: "DON'T LOOK AT IT JUST TAKE IT", s: "Sometimes you don't look at the help. You just take it. This website is the strong hand. Don't look at it too hard. Just take it." },
+  { q: "EL RATO SENDS HIS REGARDS 🐀", s: "The rat is small. The rat is chaotic. The rat made you a website at 2am instead of sleeping. The rat regrets nothing. The rat loves you. Do not question the rat." },
+];
+
+let handIdx = 0;
+let handClicks = 0;
+
+function cycleHandQuote() {
+  handIdx = (handIdx + 1) % handQuotes.length;
+  document.getElementById('hand-quote').textContent = handQuotes[handIdx].q;
+  document.getElementById('hand-sub').textContent = handQuotes[handIdx].s;
+
+  const hand = document.querySelector('.hand-emoji');
+  hand.style.animation = 'none';
+  hand.offsetHeight;
+  hand.style.animation = 'strongHandReach 0.5s ease-in-out 3';
+  setTimeout(() => hand.style.animation = 'strongHandReach 2s ease-in-out infinite', 1500);
+
+  spawnConfetti(20);
+
+  // Reveal hidden time after 3 clicks
+  handClicks++;
+  if (handClicks >= 3) {
+    document.getElementById('hand-time').classList.add('revealed');
+  }
+}
+
+// ============================== QUOTES ==============================
+const quotes = [
+  { t: 'The ghost in Scary Movie 2 could not even scare Cindy properly and it was LITERALLY A GHOST. Your problems are less competent than that ghost. Think about it.', a: '— парапсихологический анализ' },
+  { t: 'Hanson used his strong hand to serve turkey to a table of people who openly mocked him. And he kept going. That is the energy. THAT is the energy.', a: '— мотивация от человека с проблемной рукой' },
+  { t: 'The cat fought a man and WON. A HOUSE CAT. You have more skills than that cat. Probably. I have not seen you fight. But statistically you probably win against a house cat.', a: '— зоологический анализ' },
+  { t: '"WAZZUUUUP" — your cells say this every morning when you wake up. They are genuinely excited to be part of you. Even on Thursdays. Especially on Thursdays.', a: '— Scary Movie, биологически говоря' },
+  { t: 'Buddy the parrot said more unhinged things than your inner critic and NOBODY took Buddy seriously. Apply this logic to your brain. Your brain is Buddy. Ignore Buddy.', a: '— орнитологическая мудрость' },
+  { t: 'Cindy survived a haunted house, a possessed man, and a dinner with Hanson\'s hand. You can survive one bad week. The math checks out. I did the math. On paper. With a pen.', a: '— статистика выживания' },
+  { t: 'Shorty smoked weed with a ghost and LIVED. The bar for survival is literally on the floor. You are above the bar. You are above Shorty. Everyone is above Shorty. But still.', a: '— мотивационная иерархия' },
+  { t: 'The entire mansion was haunted and they STILL STAYED because leaving felt like quitting. That is toxic but also kind of inspiring? Do not stay in haunted mansions. But do not quit your life. Mixed message. Sorry.', a: '— терапия из фильма ужасов' },
+];
+
+let quoteIdx = 0;
+function nextQuote() {
+  quoteIdx = (quoteIdx + 1) % quotes.length;
+  document.getElementById('quote-text').textContent = quotes[quoteIdx].t;
+  document.getElementById('quote-attr').textContent = quotes[quoteIdx].a;
+  const box = document.querySelector('.quote-box');
+  box.style.animation = 'none'; box.offsetHeight;
+  box.style.animation = 'wobble 0.3s ease-in-out 3';
+  setTimeout(() => box.style.animation = 'none', 900);
+}
+
+// ============================== FLOATERS ==============================
+const chaosEmojis = ['🤚','🍳','🔪','👻','🎬','💀','🐔','🫕','🤌','🧎‍♀️','🧑‍🍳','🐈','🦜','блин','ой','нет','🐀'];
+
+function startFloaters() {
+  setInterval(() => {
+    if (document.hidden) return;
+    const el = document.createElement('div');
+    el.className = 'floater';
+    el.textContent = chaosEmojis[Math.floor(Math.random() * chaosEmojis.length)];
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.bottom = '-50px';
+    el.style.animationDuration = (7 + Math.random() * 9) + 's';
+    el.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 17000);
+  }, 1500);
+}
+
+// ============================== SCROLL REVEAL ==============================
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fact-item').forEach(item => observer.observe(item));
+
+// ============================== PANIC MODE ==============================
+let panicActive = false;
+function triggerPanicMode() {
+  if (panicActive) { document.body.classList.remove('panic-mode'); panicActive = false; return; }
+  panicActive = true;
+  document.body.classList.add('panic-mode');
+  spawnConfetti(100);
+  for (let i = 0; i < 30; i++) {
+    setTimeout(() => {
+      const el = document.createElement('div');
+      el.className = 'floater';
+      el.textContent = chaosEmojis[Math.floor(Math.random() * chaosEmojis.length)];
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.bottom = '-50px';
+      el.style.animationDuration = (2 + Math.random() * 3) + 's';
+      el.style.fontSize = (2 + Math.random() * 3) + 'rem';
+      el.style.opacity = '1';
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 5000);
+    }, i * 80);
+  }
+  setTimeout(() => { document.body.classList.remove('panic-mode'); panicActive = false; }, 5000);
+}
+
+// ============================== CONFETTI ==============================
+const canvas = document.getElementById('confetti-canvas');
+const ctx = canvas.getContext('2d');
+let confetti = [];
+
+function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+function spawnConfetti(n) {
+  const colors = ['#ff6b6b','#feca57','#48dbfb','#ff9ff3','#1dd1a1','#f368e0'];
+  for (let i = 0; i < n; i++) {
+    confetti.push({
+      x: Math.random() * canvas.width, y: -10,
+      w: 6 + Math.random() * 8, h: 4 + Math.random() * 5,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      vx: (Math.random()-0.5)*6, vy: 2+Math.random()*4,
+      rot: Math.random()*360, rs: (Math.random()-0.5)*10, life: 1
+    });
+  }
+}
+
+function animateConfetti() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  confetti = confetti.filter(p => p.life > 0);
+  confetti.forEach(p => {
+    p.x += p.vx; p.y += p.vy; p.vy += 0.1; p.rot += p.rs; p.life -= 0.005;
+    ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot*Math.PI/180);
+    ctx.globalAlpha = p.life; ctx.fillStyle = p.color;
+    ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h); ctx.restore();
+  });
+  requestAnimationFrame(animateConfetti);
+}
+animateConfetti();
+
+// ============================== TITLE GLITCH ==============================
+const titleEl = document.getElementById('main-title');
+const originalTitle = titleEl.textContent;
+const glitchChars = 'БЛЯДЖЖ!@#$%^&*ЁЁЁЁЁ█▓▒░АААА';
+setInterval(() => {
+  if (Math.random() > 0.85) {
+    let g = '';
+    for (let i = 0; i < originalTitle.length; i++) {
+      g += Math.random() > 0.65 ? glitchChars[Math.floor(Math.random()*glitchChars.length)] : originalTitle[i];
+    }
+    titleEl.textContent = g;
+    setTimeout(() => titleEl.textContent = originalTitle, 100);
+  }
+}, 300);
+
+// ============================== TAB TITLE CHANGE ==============================
+const tabTitles = ['ВЕРНИСЬ', 'МНЕ ОДИНОКО', 'Я ПРОСТО САЙТ', 'ПОЖАЛУЙСТА', ':('];
+let tabIdx = 0;
+let tabInterval;
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    tabIdx = 0;
+    document.title = tabTitles[0];
+    tabInterval = setInterval(() => {
+      tabIdx = (tabIdx + 1) % tabTitles.length;
+      document.title = tabTitles[tabIdx];
+    }, 2000);
+  } else {
+    clearInterval(tabInterval);
+    document.title = 'ОЧЕНЬ ВАЖНЫЙ САЙТ';
+  }
+});
+
+// ============================== RIGHT CLICK ==============================
+document.addEventListener('contextmenu', (e) => {
+  e.preventDefault();
+  const msgs = [
+    'right-clicking won\'t help you here',
+    'нет. просто нет.',
+    'what were you hoping to find? the meaning of life? it\'s not in the context menu.',
+    'Ctrl+C Ctrl+V your problems away? if only.',
+    'inspect element won\'t fix your self-doubt',
+    'this menu is empty like your excuses for being "unproductive"',
+  ];
+  const el = document.createElement('div');
+  el.className = 'right-click-msg';
+  el.textContent = msgs[Math.floor(Math.random()*msgs.length)];
+  el.style.left = e.clientX + 'px';
+  el.style.top = e.clientY + 'px';
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 2500);
+});
+
+// ============================== HEART EXPLOSION ==============================
+let heartClicks = 0;
+document.getElementById('finale-heart').addEventListener('click', () => {
+  heartClicks++;
+  if (heartClicks >= 7) {
+    heartClicks = 0;
+    const hearts = ['❤️','🧡','💛','💚','💙','💜','🤎','🖤','🤍','💖','💗','💕'];
+    for (let i = 0; i < 30; i++) {
+      const h = document.createElement('div');
+      h.className = 'mini-heart';
+      h.textContent = hearts[Math.floor(Math.random()*hearts.length)];
+      h.style.left = '50%';
+      h.style.top = '50%';
+      h.style.fontSize = (1+Math.random()*2)+'rem';
+      h.style.setProperty('--rot', (Math.random()*360)+'deg');
+      h.style.setProperty('--tx', ((Math.random()-0.5)*400)+'px');
+      h.style.setProperty('--ty', (-100-Math.random()*300)+'px');
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 2500);
+    }
+    spawnConfetti(80);
+  }
+});
+
+// ============================== ERROR DIALOG (appears once after 45s) ==============================
+setTimeout(() => {
+  if (!document.hidden) {
+    document.getElementById('error-dialog').style.display = 'block';
+  }
+}, 45000);
+
+function closeError() {
+  document.getElementById('error-dialog').style.display = 'none';
+  spawnConfetti(20);
+}
+
+// ============================== 2-MINUTE NOTIFICATION ==============================
+setTimeout(() => {
+  if (document.hidden) return;
+  const n = document.createElement('div');
+  n.className = 'notif-popup';
+  n.textContent = 'ты на этом сайте уже 2 минуты. это 2 минуты "непродуктивности." пожалуйста.';
+  document.body.appendChild(n);
+  setTimeout(() => n.remove(), 4000);
+}, 120000);
+
+// ============================== KONAMI CODE ==============================
+const konami = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+let kIdx = 0;
+document.addEventListener('keydown', (e) => {
+  if (e.key === konami[kIdx]) {
+    kIdx++;
+    if (kIdx === konami.length) {
+      kIdx = 0;
+      document.body.style.transition = 'transform 1s';
+      document.body.style.transform = 'rotate(180deg)';
+      spawnConfetti(200);
+      setTimeout(() => document.body.style.transform = 'rotate(360deg)', 3000);
+      setTimeout(() => { document.body.style.transform = ''; }, 4000);
+    }
+  } else { kIdx = 0; }
+});
+
+// ============================== SECRET KEYBOARD: "блин" ==============================
+let blinBuf = '';
+document.addEventListener('keydown', (e) => {
+  if (e.key.length === 1) blinBuf += e.key;
+  if (blinBuf.length > 10) blinBuf = blinBuf.slice(-10);
+  if (blinBuf.includes('blin') || blinBuf.includes('блин')) {
+    blinBuf = '';
+    document.body.style.transition = 'filter 0.3s';
+    document.body.style.filter = 'sepia(1) saturate(3)';
+    const n = document.createElement('div');
+    n.className = 'notif-popup';
+    n.textContent = 'БЛИН detected. Activating бабушка mode.';
+    document.body.appendChild(n);
+    setTimeout(() => { n.remove(); document.body.style.filter = ''; }, 3000);
+    spawnConfetti(50);
+  }
+});
+
+// ============================== SCROLL BACK TO TOP MESSAGE ==============================
+let wasAtBottom = false;
+window.addEventListener('scroll', () => {
+  const atBottom = (window.innerHeight + window.scrollY) >= document.body.scrollHeight - 200;
+  if (atBottom) wasAtBottom = true;
+  if (wasAtBottom && window.scrollY < 200) {
+    wasAtBottom = false;
+    const n = document.createElement('div');
+    n.className = 'notif-popup';
+    n.textContent = 'ты перечитываешь? 🥺 это самое милое что случилось с этим сайтом.';
+    document.body.appendChild(n);
+    setTimeout(() => n.remove(), 4000);
+  }
+});
+
+// ============================== CONSOLE MESSAGES ==============================
+console.log('%c ПРИВЕТ 👋', 'font-size: 30px; font-weight: bold; color: #ff6b6b;');
+console.log('%c ты залезла в консоль? серьёзно?', 'font-size: 14px; color: #feca57;');
+console.log('%c ладно, раз уж ты здесь:', 'font-size: 12px; color: #888;');
+console.log('%c ты замечательная. даже когда не чувствуешь этого. особенно тогда.', 'font-size: 14px; color: #1dd1a1;');
+console.log('%c а теперь закрой консоль, это не для тебя, это для нердов.', 'font-size: 12px; color: #555;');
+console.log('%c (ты нерд? ладно, оставайся. но ты всё равно замечательная.)', 'font-size: 11px; color: #444;');
+console.log('%c 🐀 el rato was here', 'font-size: 10px; color: #333;');
+</script>
+</body>
+</html>
